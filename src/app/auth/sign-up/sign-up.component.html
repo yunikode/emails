@@ -2,6 +2,12 @@
 <form class="ui form" [formGroup]="authForm">
   <app-input label='Username' [control]="$any(authForm.get('username'))"></app-input>
   <app-input label='Password' [control]="$any(authForm.get('password'))" inputType="password"></app-input>
-  <app-input label='Password Confirmation' [control]="$any(authForm.get('passwordConfirmation'))" inputType="password"></app-input>
-  <button class="ui submit button primary">Submit</button>
+  <app-input label='Password Confirmation' [control]="$any(authForm.get('passwordConfirmation'))" inputType="password">
+  </app-input>
+  <div *ngIf="authForm.errors && authForm.controls['password'].touched && authForm.controls['passwordConfirmation'].touched" class="ui red basic label">
+    <p *ngIf="authForm.errors['passwordsDontMatch']">Passwords don't match</p>
+  </div>
+  <div>
+    <button class="ui submit button primary">Submit</button>
+  </div>
 </form>
