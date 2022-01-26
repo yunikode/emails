@@ -28,7 +28,15 @@ export class SignUpComponent implements OnInit {
       return
     }
 
-    this.auth.signUp(this.authForm.value).subscribe((res) => console.log(res))
+    this.auth.signUp(this.authForm.value).subscribe({
+      next: (response) => {},
+      error: (err) => {
+        if (!err.status) {
+          this.authForm.setErrors({ internetError: true })
+        }
+        this.authForm.setErrors({ unknownError: true })
+      }
+    })
 
   }
 

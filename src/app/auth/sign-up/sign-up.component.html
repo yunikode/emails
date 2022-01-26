@@ -6,6 +6,8 @@
   </app-input>
   <div *ngIf="authForm.errors && authForm.controls['password'].touched && authForm.controls['passwordConfirmation'].touched" class="ui red basic label">
     <p *ngIf="authForm.errors['passwordsDontMatch']">Passwords don't match</p>
+    <p *ngIf="authForm.errors['internetError']">Can't connect to server</p>
+    <p *ngIf="authForm.errors['unknownError']">Unknown error - something went wrong</p>
   </div>
   <div>
     <button class="ui submit button primary">Submit</button>
