@@ -12,10 +12,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  usernameAvailable(username:string) {
+  usernameAvailable(username: string) {
     return this.http
-            .post<UsernameAvailable>('https://api.angular-email.com/auth/username',
-                { username }
-            )
+      .post<UsernameAvailable>('https://api.angular-email.com/auth/username',
+        { username }
+      )
+  }
+
+  signUp(credentials:any) {
+    return this.http.post<any>('https://api.angular-email.com/auth/signup', credentials )
   }
 }
