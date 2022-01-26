@@ -1,1 +1,12 @@
-<p>input works!</p>
+<div class="field">
+  <label>{{label}}</label>
+  <input [formControl]='control' [type]="inputType" />
+  <div *ngIf="showErrors()" class="ui pointing red basic label">
+    <p *ngIf="control.errors!['required']">A value is requried</p>
+    <p *ngIf="control.errors!['minlength']">A minimum of {{control.errors!['minlength'].requiredLength}} characters is required</p>
+    <p *ngIf="control.errors!['maxlength']">A maximum of {{control.errors!['maxlength'].requiredLength}} characters is required</p>
+    <p *ngIf="control.errors!['pattern']">Invalid format</p>
+    <p *ngIf="control.errors!['nonUniqueUsername']">Username is taken</p>
+    <p *ngIf="control.errors!['internetError']">Cannot connect to server</p>
+  </div>
+</div>

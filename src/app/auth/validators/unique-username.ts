@@ -20,7 +20,7 @@ export class UniqueUsername implements AsyncValidator {
                     if (err.error.username) {
                         return of({ nonUniqueUsername: true })
                     } else {
-                        return of({ error: err })
+                        return of({ internetError: true })
                     }
                 })
             )

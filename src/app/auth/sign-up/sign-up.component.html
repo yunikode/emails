@@ -1,19 +1,7 @@
 <h3>Create an Account</h3>
 <form class="ui form" [formGroup]="authForm">
-  <div class="field">
-    <label>Username</label>
-    <input formControlName='username' type="text" />
-  </div>
-  <div class="field">
-    <label>Password</label>
-    <input formControlName='password' type="password" />
-  </div>
-  <div class="field">
-    <label>Password Confirmation</label>
-    <input formControlName='passwordConfirmation' type="password" />
-  </div>
-
+  <app-input label='Username' [control]="$any(authForm.get('username'))"></app-input>
+  <app-input label='Password' [control]="$any(authForm.get('password'))" inputType="password"></app-input>
+  <app-input label='Password Confirmation' [control]="$any(authForm.get('passwordConfirmation'))" inputType="password"></app-input>
   <button class="ui submit button primary">Submit</button>
 </form>
-
-{{authForm.controls['username'].errors| json}}
