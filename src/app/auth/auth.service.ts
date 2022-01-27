@@ -33,7 +33,7 @@ interface AuthResponse {
 export class AuthService {
 
   rootUrl = 'https://api.angular-email.com'
-  signedIn$ = new BehaviorSubject(false)
+  signedIn$ = new BehaviorSubject(null||false)
 
   constructor(private http: HttpClient) { }
 
