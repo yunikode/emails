@@ -1,9 +1,10 @@
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthHttpInterceptor } from './auth/auth-http-interceptor';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -16,7 +17,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
