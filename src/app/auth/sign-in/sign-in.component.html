@@ -1,1 +1,15 @@
-<p>sign-in works!</p>
+<h3>Sign In</h3>
+<form (ngSubmit)="onSubmit()" [formGroup]="authForm" class="ui form">
+  <app-input label='Username' [control]="$any(authForm.get('username'))"></app-input>
+  <app-input label='Password' [control]="$any(authForm.get('password'))" inputType="password"></app-input>
+
+  <div *ngIf="authForm.errors" class="ui red basic label">
+    <p *ngIf="authForm.errors['internetError']">Can't connect to server</p>
+    <p *ngIf="authForm.errors['unknownError']">Unknown error - something went wrong</p>
+    <p *ngIf="authForm.errors['credentials']">Username or password wrong</p>
+  </div>
+
+  <div>
+    <button class="ui submit button primary">Submit</button>
+  </div>
+</form>

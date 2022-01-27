@@ -13,23 +13,23 @@ import { UniqueUsername } from '../validators/unique-username';
 export class SignUpComponent implements OnInit {
 
   authForm = new FormGroup({
-    username: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20),Validators.pattern(/^[a-z0-9]+$/)],[this.unique.validate]),
-    password: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
-    passwordConfirmation: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)])
-  }, {validators: [this.matchPassword.validate]})
+    username: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20), Validators.pattern(/^[a-z0-9]+$/)], [this.unique.validate]),
+    password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
+    passwordConfirmation: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)])
+  }, { validators: [this.matchPassword.validate] })
 
-  constructor(private matchPassword: MatchPassword, private unique:UniqueUsername, private auth:AuthService) { }
+  constructor(private matchPassword: MatchPassword, private unique: UniqueUsername, private auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    if(this.authForm.invalid) {
+    if (this.authForm.invalid) {
       return
     }
 
     this.auth.signUp(this.authForm.value).subscribe({
-      next: (response) => {},
+      next: (response) => { },
       error: (err) => {
         if (!err.status) {
           this.authForm.setErrors({ internetError: true })
