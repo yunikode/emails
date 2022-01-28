@@ -7,12 +7,13 @@ const routes: Routes = [
   {
     path: 'inbox',
     canLoad: [AuthGuard],
-    loadChildren: () => import('./inbox/inbox.module').then(mod => mod.InboxModule)
-  }
+    loadChildren: () =>
+      import('./inbox/inbox.module').then((mod) => mod.InboxModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
